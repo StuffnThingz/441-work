@@ -5,7 +5,7 @@ Homework repo for UMontana Media Arts,
 Web Tech (MART441) course.
 
 Base URL for site:
-https://github.com/StuffnThingz/441-work.git
+https://github.com/stuffnthingz/441-work.git
 
 [Live Page](https://stuffnthingz.github.io/441-work/HW-1/)
 
