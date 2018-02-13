@@ -1,49 +1,39 @@
-var song;
-var button;
-var jump;
+var mic;
+var fft;
 
 function setup() {
-  createCanvas(600, 400);
-  song = loadSound("stuff.mp3", loaded);
-  button = createButton("play");
-  button.mousePressed(togglePlaying);
-  jumpButton = createButton("jump");
-  jumpButton.mousePressed(jumpSong);
-  background(51);
-
-  song.addCue(2, changeBackground, color(0, 0, 255));
-  song.addCue(4, changeBackground, color(0, 255, 255));
-  song.addCue(6, changeBackground, color(255, 255, 255));
-}
-
-function changeBackground() {
-  background(random(255), random(255), random(255));
-}
-
-function jumpSong() {
-  var len = song.duration();
-  var t = 0;//random(len);
-  console.log(t);
-  song.jump(t);
+   createCanvas(windowWidth, windowHeight);
+   mic = new p5.AudioIn();
+   mic.start();
+   fft = new p5.FFT(0.9, 1024);
+   fft.setInput(mic);
 }
 
 function draw() {
-  //if (song.currentTime() > 3) {
-    //background(song.currentTime() * 20, 0, 255);
-  //}
-}
+   background('#020b49');
+   noStroke();
+   var spectrum = fft.analyze();
+   var volume = mic.getLevel();
+   var threshold = 150;
+   var threshold2 = 255;
+   //var threshold = 0.05;
 
-function loaded() {
-  console.log("loaded");
-}
+   beginShape();
+   for (i = 0; i < spectrum.length ; i++) {
+     //if (volume > threshold) {
+    if (spectrum[i] > threshold) {
+      fill(spectrum[i], spectrum[i]/10, 0);
+    } else {
+      fill(0, spectrum[i]/10, spectrum[i]);
+    }
+    var x = map(i, 0, spectrum.length/10, 0, width);
+    var h = map(spectrum[i], 0, 255, 0, height);
+    rect(x, height, spectrum.length/20, -h);
+   }
 
-function togglePlaying() {
-  if (!song.isPlaying()){
-    song.play();
-    song.setVolume(0.3);
-    button.html("pause");
-  } else {
-    song.pause();
-    button.html("play");
-  }
+   endShape();
+var i = max(spectrum);
+   // console.log(i);
+i = spectrum.indexOf(i);
+   console.log(i);
 }
