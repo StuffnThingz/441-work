@@ -125,17 +125,17 @@ function range(start, end, step) {
 }
 
 //takes the range 1, 2, 3...10 in the array then uses var s to add the number 1 - 10.
-function sum(array) {
-  var s = 0;
-  for (var i = 0; i < array.length; i++) {
-    s += array[i];
+function arraySum(innerArray){
+  let s = 0;
+  for(let i = 0; i < innerArray.length; i++) {
+    s += innerArray[i];
   }
   return s;
 }
 
 console.log(range(1, 10));
 console.log(range(5, 2, -1));
-console.log(sum(range(1, 10)));
+console.log( arraySum(range(1, 10)) );
 
 
 /**************************************************/
