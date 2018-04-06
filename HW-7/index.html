@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Tobin's Adventure Site</title>
+        <meta name="author" content="Tobin Long">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="style.css" />
+    </head>
+    <body>
+
+      <h1>Hello! What's your name?</h1>
+        <form class="nameForm" action="#" method="post">
+         <input type="text" name="textInput" placeholder="Enter your name" id="textIn1">
+         <button  type="button" name="button" id="runButton" onclick="this.disabled = true;">Enter Name</button>
+        </form>
+
+        <div class="storageDiv" id="storageDiv"></div>
+
+        <button id="b1">I like turtles</button>
+          <div class="extra-text-container"  hidden="true">
+              <h1>Congratulations!</h1>
+              <p>
+                You get it! Click return and have a wonderful day.
+              </p>
+          </div>
+
+           <button id="b2">What?</button>
+            <div class="extra-text-container2"  hidden="true">
+                <h1>Hmmm... that's not very funny.</h1>
+
+                <p>
+                  Do you think this is funny?
+                </p>
+
+                <p align="center" class="hostedVid">
+                  <iframe width="560" height="315" src="https://www.youtube.com/embed/CMNry4PE93Y" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+                </p>
+
+                <button id="b3">Yes</button>
+                  <div id="yes-container" hidden="true">
+                    <p>
+                      Good! Glad you changed you mind. Click return and have a wonderful day.
+                    </p>
+                  </div>
+                <button id="b4">Also Yes</button>
+                  <div class="yes-container2"  hidden="true" >
+                    <p>
+                      Good! Glad you changed you mind. Click return and have a wonderful day.
+                    </p>
+                  </div>
+
+            </div>
+
+    <script src="./hw-7.js"></script>
+
+    </body>
+
+</html>
