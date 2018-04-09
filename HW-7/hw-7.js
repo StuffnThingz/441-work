@@ -1,63 +1,101 @@
-
-
-let btEl = document.querySelector("#b1");
-let btEl2 = document.querySelector("#b2");
-let btEl3 = document.querySelector("#b3");
-let btEl4 = document.querySelector("#b4");
+// Making variables for all the elements
+let body = document.body;
+let div_stuff = document.createElement("div");
+let btn_strat = document.querySelector("#strat_btn");
+let btn_paul = document.querySelector("#paul_btn");
 let para = document.createElement('p');
-let textEl = document.querySelector(".extra-text-container");
-let textEl2 = document.querySelector(".extra-text-container2");
-let textEl3 = document.querySelector("#yes-container");
-let textEl4 = document.querySelector("#yes-container2");
-//attempting to hide&show buttons
-;
-
-// Yes/no button stuff
-
-btEl.addEventListener("click", showHideText);
-btEl2.addEventListener("click", showHideText2);
-// btEl3.addEventListener("click", showHideText3);
-// btEl4.addEventListener("click", showHideText4);
-
-
-// attemping to hide form stuff
-
+let intro = document.querySelector(".question");
+let text_Strat = document.querySelector(".Strat");
+let text_Paul = document.querySelector(".Paul");
+let divEl = document.querySelector(".storageDiv");
+let formEl = document.querySelector(".form");
+// Defining buttons
+btn_strat.addEventListener("click", showHideText_Strat);
+btn_paul.addEventListener("click", showHideText_Paul);
+// Using the text grab for the input form, just like you showed
 function grabText() {
-  let textIn;
-  textIn = document.querySelector("#textIn1").value;
+    let textIn;
+    textIn = document.querySelector("#textIn1").value;
 
-  if( textIn.length < 1){ alert("Please refresh the browser and enter a name!"); return }
+    if( textIn.length < 1){ alert("What's your name, breh?"); return }
 
-  let textAdd = document.createTextNode("Sup, " + textIn + "? Do you like turtles?")
 
-  let newP = document.createElement("p");
+    let textToAdd = document.createTextNode("What up, "+textIn+"? What would you do in this situation?");
 
-  newP.appendChild(textAdd);
 
-  let storage = document.querySelector("#storageDiv");
+    let newP = document.createElement("p");
 
-  storage.appendChild(newP);
+    newP.appendChild(textToAdd);
+
+    let storage = document.querySelector("#storageDiv");
+
+    storage.appendChild(newP).style.textAlign = "center";
+
+}
+// This "grabs" the text when you type it in
+document.querySelector("#runButton").addEventListener( 'click', grabText);
+// Making show/hide functions to hide show story for each button and hide button when you click
+function showHideText_Strat() {
+    if(text_Strat.hidden){
+        btn_strat.hidden= true;
+        intro.hidden = false;
+        formEl.hidden = true;
+        text_Strat.hidden = false;
+        text_Paul.hidden= true;
+        btn_paul.hidden=true;
+        div_stuff.hidden=true;
+
+        body.style.background = "url('./imgs/homepic.jpg')";
+        body.style.backgroundPosition = "center";
+// Making alert to test out setTimeout function
+        function tryAlert() {
+          alert("GO TRY THE LES PAUL!");
+        }
+
+        setTimeout( tryAlert, 10000 );
+
+} else {
+     btn_strat.hidden =false
+     intro.hidden = false;
+     formEl.hidden = false;
+     text_Strat.hidden = true;
+     text_Paul.hidden= true;
+     btn_paul.hidden=false;
+     div_stuff.hidden=false;
+   }
 }
 
-document.querySelector("#runButton").addEventListener( 'click', grabText);
+function showHideText_Paul() {
+    if(text_Paul.hidden){
+        btn_paul.hidden = true;
+        intro.hidden = false;
+        formEl.hidden = true;
+        text_Strat.hidden = true;
+        text_Paul.hidden= false;
+        btn_strat.hidden=true;
+        div_stuff.hidden=true;
+
+        body.style.background = "url('./imgs/homepic.jpg')";
+        body.style.backgroundPosition = "center";
+
+        function tryAlert() {
+          alert("GO TRY THE STRAT!");
+        }
+
+        setTimeout( tryAlert, 10000 );
 
 
-function showHideText() {
-    if(textEl.hidden){
-        btEl.innerText = "Return";
-        textEl.hidden = false;
     } else {
-        btEl.innerText = "I like turtles";
-        textEl.hidden = true;
+      btn_paul.hidden = false;
+      intro.hidden = false;
+      formEl.hidden = false;
+      text_Strat.hidden = true;
+      text_Paul.hidden= true;
+      btn_strat.hidden=false;
+      div_stuff.hidden=false;
     }
-  }
-
-  function showHideText2() {
-      if(textEl2.hidden){
-          btEl2.innerText = "Return because you changed your mind";
-          textEl2.hidden = false;
-      } else {
-          btEl2.innerText = "What?";
-          textEl2.hidden = true;
-      }
-    }
+}
+// Commits elements to body of project
+body.style.background = "url('./imgs/homepic.jpg')";
+body.style.backgroundPosition = "center";
+body.appendChild(div_stuff);

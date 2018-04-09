@@ -1,21 +1,63 @@
 <!DOCTYPE html>
 <html>
+    <head>
+        <meta charset="utf-8">
+        <title>Tobin's Adventure Site</title>
+        <meta name="author" content="Tobin Long">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="style.css">
+    </head>
 
-  <head>
-    <title>My Webpage</title>
-  </head>
+    <body>
 
-  <body>
+      <!-- name form stuff -->
+  <form class="form" action="#" method="post" align = "center">
+      <input type="text" name="textInput" placeholder="What's your name?" id="textIn1">
+      <button type="button" name="button" id="runButton" onclick="this.disabled =true;">Enter Name</button>
+    </form>
 
-    <h1>My Website</h1>
-      <ul>
-        <li>Home</li>
-        <li><a href="page2.html">page 2</a></li>
-        <li><a href="page3.html">page 3</a></li>
+    <div class="storageDiv" id="storageDiv"></div>
 
-      </ul>
-    <h2>This is my homepage</h2>
-    <p>And all of my homepage content</p>
+      <!-- question -->
 
-  </body>
-</html>
+      <div class="question">
+
+      <h1>You have an unlimited budget to get whichever guitar and amp combo you want.<br>
+      What do you get?</h1>
+   <button id="strat_btn">Stratocaster and Fender</button>
+     <button id="paul_btn">Les Paul and Marshall</button>
+
+       </div>
+
+       <!-- strat stuff -->
+    <div class="Strat" hidden="true">
+
+        <p>I like that! I'm guessing you're probably going to go home and make a bad YouTube
+          video of you playing Little Wing out of time and talk for thirty minutes. Or you're
+          really good and crush it at the clubs. Either way, you have a hell of a setup!
+        </p>
+        <p align="center">
+          <img src="./imgs/strat.jpg" alt="strat" style="width:600px;height:600px;">
+        </p>
+        <h2> Want to try the Les Paul rig? Refresh the page and give it a try!</h2>
+        <br>
+    </div>
+
+    <!-- les paul stuff -->
+       <div class="Paul" hidden="true">
+
+           <p>Also Nice! Just promise not to play every intro to the Led Zeppelin classics
+           poorly, then put it on Facebook... Serioulsy, nobody cares. Listen to some
+            Joe Bonamassa and practice practice practice!</p>
+
+     <p align="center">
+
+     <img src="./imgs/paul.jpg" alt="les paul" style="width:500px;height:600px;">
+   </p>
+   <h2> Want to try the Strat? Refresh the page and crank it up!</h2
+          </div>
+
+<!-- linking javascript-->
+      <script src="./sketch.js"></script>
+    </body>
+  </html>
