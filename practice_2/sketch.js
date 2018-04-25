@@ -1,101 +1,129 @@
-// Making variables for all the elements
-let body = document.body;
-let div_stuff = document.createElement("div");
-let btn_strat = document.querySelector("#strat_btn");
-let btn_paul = document.querySelector("#paul_btn");
-let para = document.createElement('p');
-let intro = document.querySelector(".question");
-let text_Strat = document.querySelector(".Strat");
-let text_Paul = document.querySelector(".Paul");
-let divEl = document.querySelector(".storageDiv");
-let formEl = document.querySelector(".form");
-// Defining buttons
-btn_strat.addEventListener("click", showHideText_Strat);
-btn_paul.addEventListener("click", showHideText_Paul);
-// Using the text grab for the input form, just like you showed
-function grabText() {
-    let textIn;
-    textIn = document.querySelector("#textIn1").value;
 
-    if( textIn.length < 1){ alert("What's your name, breh?"); return }
+  // Defining a baseURL and key to as part of the request URL
+  var baseURL = 'https://api.nytimes.com/svc/search/v2/articlesearch.json';
+  var key = 'e60c18f1d46540878e9c067a9fd6faf5';
+  var url;
+  // Grab references to all the DOM elements you'll need to manipulate
+  var searchTerm = document.querySelector('.search');
+  var startDate = document.querySelector('.start-date');
+  var endDate = document.querySelector('.end-date');
+  var searchForm = document.querySelector('form');
+  var submitBtn = document.querySelector('.submit');
+  var nextBtn = document.querySelector('.next');
+  var previousBtn = document.querySelector('.prev');
+  var section = document.querySelector('section');
+  var nav = document.querySelector('nav');
+  // Hide the "Previous"/"Next" navigation to begin with, as we don't need it immediately
+  nav.style.display = 'none';
+  // define the initial page number and status of the navigation being displayed
+  var pageNumber = 0;
+  var displayNav = false;
+  // Event listeners to control the functionality
+  searchForm.addEventListener('submit', submitSearch);
 
+  nextBtn.addEventListener('click', nextPage);
+  previousBtn.addEventListener('click', previousPage);
 
-    let textToAdd = document.createTextNode("What up, "+textIn+"? What would you do in this situation?");
+  //Increments the pageNumber var
+  function nextPage(e) {
+  pageNumber++;
+  fetchResults(e);
+};
 
-
-    let newP = document.createElement("p");
-
-    newP.appendChild(textToAdd);
-
-    let storage = document.querySelector("#storageDiv");
-
-    storage.appendChild(newP).style.textAlign = "center";
-
-}
-// This "grabs" the text when you type it in
-document.querySelector("#runButton").addEventListener( 'click', grabText);
-// Making show/hide functions to hide show story for each button and hide button when you click
-function showHideText_Strat() {
-    if(text_Strat.hidden){
-        btn_strat.hidden= true;
-        intro.hidden = false;
-        formEl.hidden = true;
-        text_Strat.hidden = false;
-        text_Paul.hidden= true;
-        btn_paul.hidden=true;
-        div_stuff.hidden=true;
-
-        body.style.background = "url('./imgs/homepic.jpg')";
-        body.style.backgroundPosition = "center";
-// Making alert to test out setTimeout function
-        function tryAlert() {
-          alert("GO TRY THE LES PAUL!");
-        }
-
-        setTimeout( tryAlert, 10000 );
-
-} else {
-     btn_strat.hidden =false
-     intro.hidden = false;
-     formEl.hidden = false;
-     text_Strat.hidden = true;
-     text_Paul.hidden= true;
-     btn_paul.hidden=false;
-     div_stuff.hidden=false;
-   }
+function previousPage(e) {
+  if(pageNumber > 0) {
+    pageNumber--;
+  } else {
+    return;
+  }
+  fetchResults(e);
+};
+  //Submit search set page number back to 0
+  function submitSearch(e) {
+  pageNUmber = 0;
+  fetchResults(e);
 }
 
-function showHideText_Paul() {
-    if(text_Paul.hidden){
-        btn_paul.hidden = true;
-        intro.hidden = false;
-        formEl.hidden = true;
-        text_Strat.hidden = true;
-        text_Paul.hidden= false;
-        btn_strat.hidden=true;
-        div_stuff.hidden=true;
+function fetchResults(e) {
+  // Use preventDefault() to stop the form submitting
+  e.preventDefault();
 
-        body.style.background = "url('./imgs/homepic.jpg')";
-        body.style.backgroundPosition = "center";
+  // Assemble the full URL
+  url = baseURL + '?api-key=' + key + '&page=' + pageNumber + '&q=' + searchTerm.value + '&fq=document_type:("article")';
 
-        function tryAlert() {
-          alert("GO TRY THE STRAT!");
-        }
+  if(startDate.value !== '') {
+    url += '&begin_date=' + startDate.value;
+  };
 
-        setTimeout( tryAlert, 10000 );
+  if(endDate.value !== '') {
+    url += '&end_date=' + endDate.value;
+  };
 
+  // Use fetch() to make the request to the API
+fetch(url).then(function(result) {
+  return result.json();
+}).then(function(json) {
+  displayResults(json);
+});
 
-    } else {
-      btn_paul.hidden = false;
-      intro.hidden = false;
-      formEl.hidden = false;
-      text_Strat.hidden = true;
-      text_Paul.hidden= true;
-      btn_strat.hidden=false;
-      div_stuff.hidden=false;
+}
+
+//Displaying the data
+
+function displayResults(json) {
+  while (section.firstChild) {
+      section.removeChild(section.firstChild);
+  }
+
+  var articles = json.response.docs;
+
+  if(articles.length === 10) {
+    nav.style.display = 'block';
+  } else {
+    nav.style.display = 'none';
+  }
+
+  if(articles.length === 0) {
+    var para = document.createElement('p');
+    para.textContent = 'No results returned.'
+    section.appendChild(para);
+  } else {
+    for(var i = 0; i < articles.length; i++) {
+      var article = document.createElement('article');
+      var heading = document.createElement('h2');
+      var link = document.createElement('a');
+      var img = document.createElement('img');
+      var para1 = document.createElement('p');
+      var para2 = document.createElement('p');
+      var clearfix = document.createElement('div');
+
+      var current = articles[i];
+      console.log(current);
+
+      link.href = current.web_url;
+      link.textContent = current.headline.main;
+      para1.textContent = current.snippet;
+      para2.textContent = 'Keywords: ';
+      for(var j = 0; j < current.keywords.length; j++) {
+        var span = document.createElement('span');
+        span.textContent += current.keywords[j].value + ' ';
+        para2.appendChild(span);
+      }
+
+      if(current.multimedia.length > 0) {
+        img.src = 'http://www.nytimes.com/' + current.multimedia[0].url;
+        img.alt = current.headline.main;
+      }
+
+      clearfix.setAttribute('class','clearfix');
+
+      article.appendChild(heading);
+      heading.appendChild(link);
+      article.appendChild(img);
+      article.appendChild(para1);
+      article.appendChild(para2);
+      article.appendChild(clearfix);
+      section.appendChild(article);
     }
-}
-// Commits elements to body of project
-body.style.background = "url('./imgs/homepic.jpg')";
-body.style.backgroundPosition = "center";
-body.appendChild(div_stuff);
+  }
+};

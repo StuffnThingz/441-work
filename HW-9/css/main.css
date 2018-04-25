@@ -1,0 +1,31 @@
+/*Imported a google font*/
+@import url('https://fonts.googleapis.com/css?family=Poppins');
+body {
+  background-color: #011040;
+}
+#searchtext {
+  font-size: 18px;
+  border: 2px solid #037994;
+  border-radius: 4px;
+  text-align: center;
+  background: #ffffff;
+}
+
+#searchgifs {
+  font-size: 18px;
+  background-color: #016f8c;
+  border: 3px solid #037994;
+  border-radius: 4px;
+  text-align: center;
+  color: #ffffff;
+}
+
+div.container {
+  text-align: center;
+  padding: 1em;
+}
+
+h1 {
+  font-family: 'Poppins', sans-serif;
+  color: #ffffff;
+}

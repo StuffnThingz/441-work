@@ -1,72 +1,71 @@
-/*Imported a google font*/
-@import url('https://fonts.googleapis.com/css?family=Poppins');
-/*Set font to entire site*/
 body {
-  font-family: 'Poppins', sans-serif;
+  font-family: sans-serif;
 }
-/*Style for Input*/
-#textIn1 {
-  font-size: 18px;
-  border: 2px solid #838383;
-  border-radius: 4px;
+
+.wrapper {
+  width: 80%;
+  margin: 0 auto;
+  display: flex;
+}
+
+.controls, .results {
+  flex: 1;
+  padding: 10px;
+}
+
+form p:nth-of-type(1) {
+  margin-top: 0;
+}
+
+h1 {
   text-align: center;
 }
-/*Style for enter button*/
-#runButton {
-  font-size: 18px;
-  background-color: #ababab;
-  border: 3px solid #838383;
-  border-radius: 4px;
-  text-align: center;
-  color: #ffffff;
-}
-/*Style for Strat button*/
-#strat_btn {
+
+h2 {
   font-size: 20px;
-  background-color: #ababab;
-  border: 3px solid #838383;
-  border-radius: 4px;
-  text-align: center;
-  color: #ffffff;
 }
-/*Style for Les Paul button*/
-#paul_btn {
-  font-size: 20px;
-  background-color: #ababab;
-  border: 3px solid #838383;
-  border-radius: 4px;
-  text-align: center;
-  color: #ffffff;
+
+article p {
+  font-size: 14px;
+  line-height: 1.5;
 }
-/*Style for headingst*/
-h1, h2 {
-    font-family: 'Poppins', sans-serif;
-    line-height: 1.5 em;
-    font-weight: 100;
-    margin-bottom: 1em;
-    text-align: center;
-    color: white;
-  }
 
-  /* Centering content */
+article p:nth-of-type(2) {
+  font-size: 14px;
+  line-height: 2;
+}
 
-  div.question {
-    text-align: center;
-  }
+nav {
+  margin-bottom: 50px;
+}
 
-  div.Strat {
-      text-align: center;
-  }
-  div.Paul {
-      text-align: center;
-  }
+.prev {
+  float: left;
+}
 
-  /*setting a margin */
-  p {
-      font-size: 20px;
-      margin-top: 20px;
-      margin-bottom: 20px;
-      margin-right: 50px;
-      margin-left: 50px;
-      color: rgb(245, 245, 245);
-  }
+.next {
+  float: right;
+}
+
+article {
+  padding: 10px;
+  margin-bottom: 20px;
+  background-color: #ddd;
+  border: 1px solid #ccc;
+}
+
+img {
+  float: right;
+  margin-left: 20px;
+  max-width: 200px;
+}
+
+.clearfix {
+  clear: both;
+}
+
+span {
+  background-color: #ccc;
+  padding: 5px;
+  margin: 5px;
+}
