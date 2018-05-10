@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Tobin's Photoshop Projects</title>
+        <meta name="author" content="Tobin Long">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="../style.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    </head>
+
+    <body>
+
+      <header>
+        <h1>Tobin's Photoshop Projects</h1>
+      </header>
+
+      <nav>
+        <ul>
+            <a href="index.html"></a><li>Home</li></a>
+            <a href="./animation.html"><li>Animation</li></a>
+            <a href="#"><li>Photoshop</li></a>
+            <a href="../pages/sound.html"><li>Sound</li></a>
+        </ul>
+        <div class="handle">&#9776;</div>
+      </nav>
+
+      <div class="photoshop">
+        <h1>Experimenting with type</h1>
+          <img src="../portfolio/LONG_A5_type.jpg" alt="type" class="responsive">
+        <h1>Digital Painting</h1>
+          <img src="../portfolio/LONG_A7_painting.jpg" alt="digital-painting" class="responsive">
+        <h1>Band poster mockup</h1>
+          <img src="../portfolio/poster.jpg" alt="poster" class="responsive1">
+
+      </div>
+
+      <script>
+        $('.handle').on('click', function(){
+          $('nav ul').toggleClass('showing');
+        });
+      </script>
+
+    </body>
+
+  </html>

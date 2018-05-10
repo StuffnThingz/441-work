@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Tobin's Sound Projects</title>
+        <meta name="author" content="Tobin Long">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="../style.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    </head>
+
+    <body>
+
+      <header>
+        <h1>Tobin's Sound Projects</h1>
+      </header>
+
+      <nav>
+        <ul>
+            <a href="../index.html"></a><li>Home</li></a>
+            <a href="./animation.html"><li>Animation</li></a>
+            <a href="./photoshop.html"><li>Photoshop</li></a>
+            <a href="#"><li>Sound</li></a>
+        </ul>
+        <div class="handle">&#9776;</div>
+      </nav>
+
+      <div class="sound">
+
+        <h1>Foley Project</h1>
+          <iframe width="560" height="315" src="https://www.youtube.com/embed/KqINYAmfmtU" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+        <h1>5.1 Experimental Guitar Track</h1>
+          <iframe width="560" height="315" src="https://www.youtube.com/embed/VPpBE_NTAv0" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+
+      </div>
+
+      <script>
+        $('.handle').on('click', function(){
+          $('nav ul').toggleClass('showing');
+        });
+      </script>
+
+    </body>
+
+  </html>

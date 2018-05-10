@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Tobin's Animations</title>
+        <meta name="author" content="Tobin Long">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="../style.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    </head>
+
+    <body>
+
+      <header>
+        <h1>Tobin's Animation Projects</h1>
+      </header>
+
+      <nav>
+        <ul>
+            <a href="../index.html"></a><li>Home</li></a>
+            <a href="#"><li>Animation</li></a>
+            <a href="../pages/photoshop.html"><li>Photoshop</li></a>
+            <a href="../pages/sound.html"><li>Sound</li></a>
+        </ul>
+        <div class="handle">&#9776;</div>
+      </nav>
+
+      <div class="animation">
+        <h1>Rotoscope</h1>
+        <iframe width="560px" height="316px" src="https://www.youtube.com/embed/tcFA-QHiDZg" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+
+        <h1>Digital Flipbook</h1>
+        <iframe width="560px" height="316px" src="https://www.youtube.com/embed/0OU-r7BB6_4" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+      </div>
+
+      <script>
+        $('.handle').on('click', function(){
+          $('nav ul').toggleClass('showing');
+        });
+      </script>
+
+    </body>
+
+  </html>

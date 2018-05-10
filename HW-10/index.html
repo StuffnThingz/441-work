@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Tobin's Portfolio</title>
+        <meta name="author" content="Tobin Long">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="style.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    </head>
+
+    <body>
+<header>
+  <h1>Tobin Long's Media Arts Portfolio</h1>
+</header>
+        <nav>
+          <ul>
+              <a href="index.html"></a><li>Home</li></a>
+              <a href="pages/animation.html"><li>Animation</li></a>
+              <a href="pages/photoshop.html"><li>Photoshop</li></a>
+              <a href="pages/sound.html"><li>Sound</li></a>
+          </ul>
+          <div class="handle">&#9776;</div>
+        </nav>
+      <h1>
+        My name is Toby Long, and I am a Media Arts student
+        at the University of Montana. Here are some examples of what
+        I have been working on the last two years.
+      </h1>
+
+<!-- linking jQuery-->
+      <script>
+        $('.handle').on('click', function(){
+          $('nav ul').toggleClass('showing');
+        });
+      </script>
+    </body>
+  </html>
